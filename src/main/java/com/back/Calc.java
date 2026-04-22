@@ -8,19 +8,33 @@ public class Calc {
         return calc(mathEx);
     }
 
-    private static int calc(String exp){
+    private static int calc(String exp) {
 
-        if (!exp.contains(" + ") ){  // 종료조건 : 더이상 + 가 없으면 정수로 변환해서 반환해라
+        if (!exp.contains(" + ") && !exp.contains(" - ")) {  // 종료조건 : 더이상 + 가 없으면 정수로 변환해서 반환해라
             return Integer.parseInt(exp);
         }
+        if (exp.contains(" + ")) {
+            String[] parts = exp.split(" \\+ ", 2);
+            // 처음 " + " 기준으로 문자열을 두개로 분리
+            // ex)   1 + 2 + 3 -> 1, 2 + 3
+            int left = Integer.parseInt(parts[0]); // 1
 
-        String[] parts= exp.split(" \\+ ",2);
-        // 처음 " + " 기준으로 문자열을 두개로 분리
-        // ex)   1 + 2 + 3 -> 1, 2 + 3
-        int left = Integer.parseInt(parts[0]); // 1
+            int right = calc(parts[1]);
 
-        int rightValue = calc(parts[1]);
+            return left + right;
+        }
 
-        return left + rightValue;
+        if (exp.contains(" - ")) {
+            String[] parts = exp.split(" \\- ", 2);
+            // 처음 " + " 기준으로 문자열을 두개로 분리
+            // ex)   1 + 2 + 3 -> 1, 2 + 3
+            int left = Integer.parseInt(parts[0]); // 1
+
+            int right = calc(parts[1]);
+
+            return left - right;
+        }
+        return 0;
     }
+
 }
