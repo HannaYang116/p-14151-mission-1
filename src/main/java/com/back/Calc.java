@@ -10,9 +10,20 @@ public class Calc {
 
     private static int calc(String exp) {
 
-        if (!exp.contains(" + ") && !exp.contains(" - ")) {  // 종료조건 : 더이상 + 가 없으면 정수로 변환해서 반환해라
+        if (!exp.contains(" + ") && !exp.contains(" - ") && !exp.contains((" * "))) {  // 종료조건 : 더이상 + 가 없으면 정수로 변환해서 반환해라
             return Integer.parseInt(exp);
         }
+
+        if(exp.contains(" * ")){
+            int mulIdx = exp.lastIndexOf((" * "));
+            if(mulIdx != -1 ){
+                String left = exp.substring(0,mulIdx);
+                String right = exp.substring(mulIdx +3 );
+                return calc(left) * calc(right);
+            }
+        }
+
+
         if (exp.contains(" + ")) {
 
             int plusIdx = exp.lastIndexOf((" + ")); // 마지막 + 찾기
@@ -31,6 +42,8 @@ public class Calc {
                 return calc(left) - calc(right);
             }
         }
+
+
         return 0;
     }
 
