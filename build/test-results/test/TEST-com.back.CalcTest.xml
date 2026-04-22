@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.back.CalcTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-04-22T03:09:22.909Z" hostname="appleui-MacBookPro.local" time="0.039">
+<testsuite name="com.back.CalcTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-04-22T03:10:52.090Z" hostname="appleui-MacBookPro.local" time="0.037">
   <properties/>
-  <testcase name="10 * 10 == 100" classname="com.back.CalcTest" time="0.03"/>
+  <testcase name="10 * 10 * 10 == 1000" classname="com.back.CalcTest" time="0.03"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
