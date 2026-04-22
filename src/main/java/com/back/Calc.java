@@ -14,25 +14,22 @@ public class Calc {
             return Integer.parseInt(exp);
         }
         if (exp.contains(" + ")) {
-            String[] parts = exp.split(" \\+ ", 2);
-            // 처음 " + " 기준으로 문자열을 두개로 분리
-            // ex)   1 + 2 + 3 -> 1, 2 + 3
-            int left = Integer.parseInt(parts[0]); // 1
 
-            int right = calc(parts[1]);
-
-            return left + right;
+            int plusIdx = exp.lastIndexOf((" + ")); // 마지막 + 찾기
+            if (plusIdx != -1) {
+                String left = exp.substring(0, plusIdx); // + 기준으로 앞부분 수식 자름
+                String right = exp.substring(plusIdx + 3); // 공백 포함
+                return calc(left) + calc(right);
+            }
         }
 
         if (exp.contains(" - ")) {
-            String[] parts = exp.split(" \\- ", 2);
-            // 처음 " + " 기준으로 문자열을 두개로 분리
-            // ex)   1 + 2 + 3 -> 1, 2 + 3
-            int left = Integer.parseInt(parts[0]); // 1
-
-            int right = calc(parts[1]);
-
-            return left - right;
+            int minusIdx = exp.lastIndexOf((" - "));
+            if (minusIdx != -1){
+                String left = exp.substring(0, minusIdx);
+                String right = exp.substring(minusIdx + 3);
+                return calc(left) - calc(right);
+            }
         }
         return 0;
     }
